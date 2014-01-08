@@ -39,7 +39,8 @@ app.get('/', function(req, res){
 });
 app.get('/searching', function(req, res){
   // search twitter api
-  twitter.get('friends/list', { screen_name: req.query.search, count: 200 }, function(err, data){
+  var username = req.query.search;
+  twitter.get('friends/list', { screen_name: username, count: 200 }, function(err, data){
     if(err) {console.log("Error ? -", err)}
     // console.log(data.users)
     var friends = [];

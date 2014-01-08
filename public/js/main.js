@@ -7,7 +7,14 @@ $(function() {
       $('#results').html(data);
       $("#results").show();
       $(':input').val('');
-    // $("#questions").hide();
+      $("#yay").hide();
+      $("#again").show();
     });
+  });
+  $("#again").on("click",function(e) {
+    e.preventDefault()
+    $("#yay").show();   
+    $("#again").hide();
+    $("#results").hide();
   });
 });

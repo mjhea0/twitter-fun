@@ -38,26 +38,20 @@ app.get('/', function(req, res){
   res.render('twit', { title: "Twitter Fun"});
 });
 app.get('/searching', function(req, res){
-  // console.log(req.query.search)
   // search twitter api
   twitter.get('friends/list', { screen_name: req.query.search, count: 200 }, function(err, data){
     if(err) {console.log("Error ? -", err)}
-    // console.log((data.users).length)
-    var friends = [];
-    for (var i = 0; i < (data.users).length ; i++) {
-      // friends.push(data.users[i].screen_name)
-      twitter.get('friendships/show', { source_screen_name: req.query.search, target_screen_name: data.users[i].screen_name}, function(error, results){
-        if(err) {console.log("Error ? -", err)}
-        // console.log(results.relationship.target)
-        // var test = results.relationship.target
-        // console.log(friends)
-        friends.push(results.relationship.target)
-        res.send(friends)
-      });
-    };
-    // holds all users
-      // var test = data.users
-      // res.send(test)
+    console.log(data.users)
+    res.send(data.users)
+    // var friends = [];
+    // for (var i = 0; i < (data.users).length ; i++) {
+    //   friends.push(data.users[i])
+    //   twitter.get('friendships/show', {source_screen_name: req.query.search, target_screen_name: data.users[i].screen_name}, function(error, results){
+    //     if(err) {console.log("Error ? -", err)}
+    //     console.log(results)
+    //     res.send(results)
+    //   });
+    // };
   })
 });
 

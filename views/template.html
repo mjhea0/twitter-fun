@@ -4,9 +4,13 @@
   <hr>
   <h4>Friends:</h4>
   <br>
-  {{#each resultsObject}}
-    <li>Key: {{@key}} Value = {{screen_name}}</li>
+  {{#each resultsArray}}
+    <li>{{screen_name}}</li>
   {{/each}}
   <br>
   </ol>
 </script>
+
+<!-- {{#each resultsObject}}
+  <li>Key: {{@key}} Value = {{screen_name}}</li>
+{{/each}} -->

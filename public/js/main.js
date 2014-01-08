@@ -11,15 +11,15 @@ $(function() {
     console.log($("input").val())
     var parameters = { search: $("input").val() };
     $.get('/searching',parameters, function(data) {
-      if (data instanceof Object) {
-        $results.html(dataTemplate({resultsObject:data}));
+      if (data instanceof Array) {
+        $results.html(dataTemplate({resultsArray:data}));
         console.log(data)
       } else {
         $results.html(data);
-        console.log(data)
+        // console.log(data)
       };
       $("#results").show();
-      $(':input').val('');
+      // $(':input').val('');
       $("#yay").hide();
       $("#again").show();
     });

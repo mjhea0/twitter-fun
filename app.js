@@ -50,12 +50,11 @@ app.get('/searching', function(req, res){
         if(err) {console.log("Error ? -", err)}
         // console.log(results.relationship.target)
         // var test = results.relationship.target
+        // console.log(friends)
         friends.push(results.relationship.target)
-        console.log(friends)
+        res.send(friends)
       });
-      res.send(friends)
     };
-    // console.log(friends)
     // holds all users
       // var test = data.users
       // res.send(test)

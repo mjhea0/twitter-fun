@@ -40,7 +40,6 @@ app.get('/searching', function(req, res){
   twitter.get('friends/list', { screen_name: req.query.search }, function(err, data){
     console.log(data.users[0].screen_name)
     var test = data.users[0].screen_name
-    // res.send(data.users)
     res.send(test)
   })
 });

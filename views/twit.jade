@@ -1,4 +1,4 @@
-!!! 5
+doctype html
 html
   head
     title= title
@@ -21,8 +21,10 @@ html
     br
     br
     h4 Results
-    #results
+    ul#results
+    include template.html
 
   script(src='http://code.jquery.com/jquery.js')
+  script(src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js")
   script(src='/js/main.js')
   script(src='/js/bootstrap.min.js')

@@ -45,15 +45,22 @@ app.get('/searching', function(req, res){
     // console.log(data.users)
     var friends = [];
     for (var i = 0; i < (data.users).length ; i++) {
-      friends.push(data.users[i])
-    //   twitter.get('friendships/show', {source_screen_name: req.query.search, target_screen_name: data.users[i].screen_name}, function(error, results){
-    //     if(err) {console.log("Error ? -", err)}
-    //     console.log(results)
-    //     res.send(results)
-    //   });
+      twitter.get('friendships/show', {source_screen_name: username, target_screen_name: data.users[i].screen_name}, 
+        function(error, results){
+        if(err) {console.log("Error ? -", err)}
+        // console.log(results.relationship.target.screen_name)
+        // console.log(results.relationship.target.following)
+        friends.push(results.relationship.target.screen_name)
+        friends.push((results.relationship.target.following).toString())
+        console.log(friends)
+        if (friends.length === ((data.users).length + (data.users).length)) {
+          console.log("whee")
+          res.send(friends)
+        };
+      });
     };
-    console.log(friends)
-    res.send(friends)
+    // console.log(friends)
+    // res.send(friends)
   })
 });
 

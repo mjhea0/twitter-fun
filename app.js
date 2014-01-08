@@ -41,17 +41,18 @@ app.get('/searching', function(req, res){
   // search twitter api
   twitter.get('friends/list', { screen_name: req.query.search, count: 200 }, function(err, data){
     if(err) {console.log("Error ? -", err)}
-    console.log(data.users)
-    res.send(data.users)
-    // var friends = [];
-    // for (var i = 0; i < (data.users).length ; i++) {
-    //   friends.push(data.users[i])
+    // console.log(data.users)
+    var friends = [];
+    for (var i = 0; i < (data.users).length ; i++) {
+      friends.push(data.users[i])
     //   twitter.get('friendships/show', {source_screen_name: req.query.search, target_screen_name: data.users[i].screen_name}, function(error, results){
     //     if(err) {console.log("Error ? -", err)}
     //     console.log(results)
     //     res.send(results)
     //   });
-    // };
+    };
+    console.log(friends)
+    res.send(friends)
   })
 });
 

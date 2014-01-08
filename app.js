@@ -37,9 +37,14 @@ app.get('/', function(req, res){
 });
 app.get('/searching', function(req, res){
   console.log(req.query.search)
-  twitter.get('friends/list', { screen_name: req.query.search }, function(err, data){
-    console.log("Error ? -", err)
-    console.log(data.users)
+  twitter.get('friends/list', { screen_name: req.query.search, count: 200 }, function(err, data){
+    if(err) {console.log("Error ? -", err)}
+    console.log((data.users).length)
+    var friends;
+    for (var i = 0; i < (data.users).length ; i++) {
+      friends.push(data.users[i].screen_name)
+      console.log(friends)
+    };
     var test = data.users
     res.send(test)
   })

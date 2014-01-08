@@ -13,6 +13,7 @@ $(function() {
     $.get('/searching',parameters, function(data) {
       if (data instanceof Array) {
         $results.html(dataTemplate({resultsArray:data}));
+        console.log(data)
       } else {
         $results.html(data);
       };
@@ -28,5 +29,5 @@ $(function() {
     $("#again").hide();
     $("#results").hide();
   });
-  
+
 });

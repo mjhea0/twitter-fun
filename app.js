@@ -38,8 +38,8 @@ app.get('/', function(req, res){
 app.get('/searching', function(req, res){
   console.log(req.query.search)
   twitter.get('followers/list', { screen_name: 'realpython' }, function(err, data){
-    console.log(data.users[0].created_at)
-    var test = data.users[0].created_at
+    console.log(data.users[0].screen_name)
+    var test = data.users[0].screen_name
     // res.send(data.users)
     res.send(test)
   })

@@ -1,0 +1,29 @@
+!!! 5
+html
+  head
+    title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
+    link(href='/css/main.css', rel='stylesheet', media='screen')
+  body
+  .container              
+    h1 Twitter Fun.
+    p.lead Are your followers following you?
+    br
+    br
+    form(role='form')
+      .form-group
+        input.form-control(for='screen-name', type='text', placeholder='Enter a screen name ..')
+      div
+        button.btn.btn-primary.btn-lg#search(type='') Submit!
+    br
+    br
+    ul
+      -for(var key in myFollowers)
+       li #{myFollowers[key].screen_name}
+    h4 Results
+    #results
+
+  script(src='http://code.jquery.com/jquery.js')
+  script(src='/js/main.js')
+  script(src='/js/bootstrap.min.js')

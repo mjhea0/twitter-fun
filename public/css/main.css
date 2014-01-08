@@ -1,0 +1,10 @@
+/* custom css */
+
+.container {
+  padding: 20px 0px;
+  max-width: 400px;
+}
+
+#search-results {
+  display:none;	
+}

@@ -34,9 +34,7 @@ app.configure('development', function(){
 
 //routes
 app.get('/ping', routes.ping);
-app.get('/', function(req, res){
-  res.render('twit', { title: "Twitter Fun"});
-});
+app.get('/', routes.index);
 app.get('/searching', function(req, res){
   // search twitter api
   var username = req.query.search;

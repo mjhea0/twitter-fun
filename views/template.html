@@ -1,16 +1,27 @@
 <script id="search-results" type="text/x-handlebars-template">
   <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Friend</th>
+        <th>Follower?</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each resultsArray}}
+        {{#if following}}
+          <tr>
+            <td>{{screen_name}}<td>
+            <td>true<td>
+          </tr>
+        {{else}}
+          <tr>
+            <td>{{screen_name}}<td>
+            <td>false<td>
+          </tr>
+        {{/if}}
+      {{/each}}
+    </tbody>
+  </table>
   <br>
-  <hr>
-  <h4>Friends:</h4>
-  <br>
-  {{#each resultsArray}}
-    {{#if following}}
-      <li>{{screen_name}} - true</li>
-    {{else}}
-      <li>{{screen_name}} - false</li>
-    {{/if}}
-  {{/each}}
-  <br>
-  </ol>
 </script>

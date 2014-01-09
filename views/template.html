@@ -5,7 +5,11 @@
   <h4>Friends:</h4>
   <br>
   {{#each resultsArray}}
-    <li>{{screen_name}} - {{following}}</li>
+    {{#if following}}
+      <li>{{screen_name}} - true</li>
+    {{else}}
+      <li>{{screen_name}} - false</li>
+    {{/if}}
   {{/each}}
   <br>
   </ol>

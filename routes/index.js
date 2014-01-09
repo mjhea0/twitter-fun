@@ -22,8 +22,12 @@ exports.search = function(req, res){
   // search twitter api for friends
   var username = req.query.search;
   twitter.get('friends/list', { screen_name: username, count: 200 }, function(err, data){
-    if(err) console.log("Error: ", err)
+    if(err) {
+      res.send(err);
+      return;
+    };
     var friends = [];
+    var test = [];
     for (var i = 0; i < (data.users).length ; i++) {
       // search twitter for info about the relationship between two users
       twitter.get('friendships/show', {source_screen_name: username, target_screen_name: data.users[i].screen_name}, 
@@ -33,9 +37,10 @@ exports.search = function(req, res){
           friends.push(results.relationship.target.screen_name)
           // add whether that friend is following you to array
           friends.push((results.relationship.target.following).toString())
+          test.push(results.relationship.target)
           // continue to loop until all data is added to the array
           if (friends.length === ((data.users).length + (data.users).length)) {
-            res.send(friends)
+            res.send(test)
           };
         });
     };

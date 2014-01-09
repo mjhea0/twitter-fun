@@ -36,29 +36,26 @@ app.configure('development', function(){
 app.get('/ping', routes.ping);
 app.get('/', routes.index);
 app.get('/searching', function(req, res){
-  // search twitter api
+  // search twitter api for friends
   var username = req.query.search;
   twitter.get('friends/list', { screen_name: username, count: 200 }, function(err, data){
-    if(err) {console.log("Error ? -", err)}
-    // console.log(data.users)
+    if(err) console.log("Error: ", err)
     var friends = [];
     for (var i = 0; i < (data.users).length ; i++) {
+      // search twitter for info about the relationship between two users
       twitter.get('friendships/show', {source_screen_name: username, target_screen_name: data.users[i].screen_name}, 
         function(error, results){
-        if(err) {console.log("Error ? -", err)}
-        // console.log(results.relationship.target.screen_name)
-        // console.log(results.relationship.target.following)
-        friends.push(results.relationship.target.screen_name)
-        friends.push((results.relationship.target.following).toString())
-        console.log(friends)
-        if (friends.length === ((data.users).length + (data.users).length)) {
-          console.log("whee")
-          res.send(friends)
-        };
-      });
+          if(err) console.log("Error: ", err)
+          // add friend to array
+          friends.push(results.relationship.target.screen_name)
+          // add whether that friend is following you to array
+          friends.push((results.relationship.target.following).toString())
+          // continue to loop until all data is added to the array
+          if (friends.length === ((data.users).length + (data.users).length)) {
+            res.send(friends)
+          };
+        });
     };
-    // console.log(friends)
-    // res.send(friends)
   })
 });
 

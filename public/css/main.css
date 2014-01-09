@@ -56,10 +56,6 @@ p, table {
   border-radius: 8px;
 }
 
-th {
-  font-size: 30px;
-}
-
-table {
-  max-width: 100px;
+.false {
+  font-style: italic;
 }

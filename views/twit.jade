@@ -5,6 +5,7 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
     link(href='/css/main.css', rel='stylesheet', media='screen')
+    link(href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya:700', rel='stylesheet', type='text/css')
   body
   .container              
     h1 Twitter Fun.
@@ -14,10 +15,10 @@ html
     #yay
       form(role='form')
         .form-group
-          input.form-control(for='screen-name', type='text', placeholder='Enter a screen name ..')
+          input.form-control#search-input(for='screen-name', type='text', placeholder='Enter a screen name ..')
         div
-          button.btn.btn-primary.btn-lg#search(type='') Submit!
-    button.btn.btn-primary.btn-lg#again(type='') Again?!
+          button.btn.btn-primary.btn-xl#search(type='') Submit!
+    button.btn.btn-primary.btn-xl#again(type='') Again?!
     br
     br 
     #results

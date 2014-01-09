@@ -32,7 +32,10 @@ exports.search = function(req, res){
       // search twitter for info about the relationship between two users
       twitter.get('friendships/show', {source_screen_name: username, target_screen_name: data.users[i].screen_name}, 
         function(error, results){
-          if(err) console.log("Error: ", err)
+          if(err) {
+            res.send(err);
+            return;
+          };
           // add friend to array
           friends.push(results.relationship.target.screen_name)
           // add whether that friend is following you to array

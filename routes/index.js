@@ -43,6 +43,7 @@ exports.search = function(req, res){
           test.push(results.relationship.target)
           // continue to loop until all data is added to the array
           if (friends.length === ((data.users).length + (data.users).length)) {
+            console.log(test)
             res.send(test)
           };
         });

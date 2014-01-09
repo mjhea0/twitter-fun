@@ -60,6 +60,6 @@ th {
   font-size: 30px;
 }
 
-.second {
-  text-align: left;
+table {
+  max-width: 100px;
 }

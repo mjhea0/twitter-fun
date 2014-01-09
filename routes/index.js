@@ -23,7 +23,8 @@ exports.search = function(req, res){
   var username = req.query.search;
   twitter.get('friends/list', { screen_name: username, count: 200 }, function(err, data){
     if(err) {
-      res.send(err);
+      res.send("<br>Error! Rate limit exceeded.");
+      console.log(err)
       return;
     };
     var friends = [];
@@ -33,7 +34,8 @@ exports.search = function(req, res){
       twitter.get('friendships/show', {source_screen_name: username, target_screen_name: data.users[i].screen_name}, 
         function(error, results){
           if(err) {
-            res.send(err);
+            res.send("<br>Error! Rate limit exceeded.");
+            console.log(err)
             return;
           };
           // add friend to array

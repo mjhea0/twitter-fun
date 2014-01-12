@@ -1,4 +1,4 @@
-var test = (function(){
+var routes = (function(){
 
   var path = require("path"),
       twitter = require('../config.js');
@@ -14,8 +14,7 @@ var test = (function(){
   exports.search = function(req, res){
     // search twitter api for friends
     var username = req.query.search,
-        friends = [],
-        test = [];
+        friends = [];
     
     twitter.get('friends/list', { screen_name: username, count: 200 }, function(err, data){
       if(err) {
@@ -33,23 +32,14 @@ var test = (function(){
               console.log(err)
               return;
             };
-            // add friend to array
-            friends.push(results.relationship.target.screen_name)
-            // add whether that friend is following you to array
-            friends.push((results.relationship.target.following).toString())
-            test.push(results.relationship.target)
+            friends.push(results.relationship.target)
             // continue to loop until all data is added to the array
             if (friends.length === ((data.users).length + (data.users).length)) {
-              console.log(test)
-              res.send(test)
+              res.send(friends)
             };
           });
       };
     })
   };
 
-}(test));
-
-// add promises, functions
-// $.when(promise)
-  // .done(res.send(result));
+}(routes));

@@ -1,14 +1,5 @@
 var path = require("path");
-var config = require('../oauth.js');
-var twit = require('twit');
-
-// twitter config
-var twitter = new twit({
-  consumer_key: config.twitter.consumerKey,
-  consumer_secret: config.twitter.consumerSecret,
-  access_token: config.twitter.accessKey,
-  access_token_secret: config.twitter.accessSecret
-})
+var twitter = require('../config.js');
 
 exports.index = function(req, res){
   res.render('twit', { title: "Twitter Fun"});
@@ -20,15 +11,17 @@ exports.ping = function(req, res){
 
 exports.search = function(req, res){
   // search twitter api for friends
-  var username = req.query.search;
+  var username = req.query.search,
+      friends = [],
+      test = [];
+  
   twitter.get('friends/list', { screen_name: username, count: 200 }, function(err, data){
     if(err) {
       res.send("<br>Error! Rate limit exceeded.");
       console.log(err)
       return;
     };
-    var friends = [];
-    var test = [];
+
     for (var i = 0; i < (data.users).length ; i++) {
       // search twitter for info about the relationship between two users
       twitter.get('friendships/show', {source_screen_name: username, target_screen_name: data.users[i].screen_name}, 
@@ -52,3 +45,7 @@ exports.search = function(req, res){
     };
   })
 };
+
+// add promises, functions
+// $.when(promise)
+  // .done(res.send(result));

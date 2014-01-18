@@ -36,6 +36,7 @@ exports.search = function(req, res){
           console.log(friends.length)
           console.log(data.users.length)
           if (friends.length === (data.users).length) {
+            // console.log(friends)
             res.send(friends)
           };
         });

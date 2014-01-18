@@ -29,4 +29,13 @@ $(function() {
     $("#results").hide();
   });
 
+    $(document).on('DOMNodeInserted', function(e){
+        if (e.target.className == 'table'){
+            console.log('it appeaers');
+            // $('#refresh-button').text('refresh nearby bus search');
+            // $('#refresh-button').removeClass('btn-info').addClass('btn-success');
+            // $('#busimg').removeClass('animated wobble');
+        }
+    });
+
 });

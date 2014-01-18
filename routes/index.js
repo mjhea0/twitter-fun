@@ -1,4 +1,4 @@
-var routes = (function(){
+
 
   var path = require("path"),
       twitter = require('../config.js');
@@ -25,6 +25,7 @@ var routes = (function(){
 
       for (var i = 0; i < (data.users).length ; i++) {
         // search twitter for info about the relationship between two users
+
         twitter.get('friendships/show', {source_screen_name: username, target_screen_name: data.users[i].screen_name}, 
           function(error, results){
             if(err) {
@@ -34,7 +35,9 @@ var routes = (function(){
             };
             friends.push(results.relationship.target)
             // continue to loop until all data is added to the array
-            if (friends.length === ((data.users).length + (data.users).length)) {
+            console.log(friends.length)
+            console.log(data.users.length)
+            if (friends.length === (data.users).length) {
               res.send(friends)
             };
           });
@@ -42,4 +45,4 @@ var routes = (function(){
     })
   };
 
-}(routes));
+

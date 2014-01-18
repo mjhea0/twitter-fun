@@ -5,23 +5,19 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(href='/css/bootstrap.min.css', rel='stylesheet', media='screen')
     link(href='/css/main.css', rel='stylesheet', media='screen')
-    link(href='http://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed|Alegreya:700', rel='stylesheet', type='text/css')
   body
-  .container              
-    h1 Twitter Fun.
-    p.lead Are your friends following you?
-    br
-    br
-    #yay
-      form(role='form')
-        .form-group
-          input.form-control#search-input(for='screen-name', type='text', placeholder='Enter a screen name ..')
-        div
-          button.btn.btn-primary.btn-xl.btn-block#search(type='') Submit!
-    button.btn.btn-success.btn-xl.btn-block#again(type='') Again?!
-    br
-    br 
-    h2#results
+  .container
+    .jumbotron
+      h1 Twitter Fun.
+      p.lead Are your friends following you?
+      #yay
+        form(role='form')
+          .form-group
+            input.form-control#search-input(for='screen-name', type='text', placeholder='Enter a screen name ..')
+          div
+            button.btn.btn-default.btn-xl.btn-block#search(type='') Submit!
+      button.btn.btn-danger.btn-xl.btn-block#again(type='') Again?!
+    h3#results
     include template.html
 
   script(src='http://code.jquery.com/jquery.js')
